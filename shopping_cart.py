@@ -36,7 +36,7 @@ products = [
 #2 INFO INPUTS
 #2.1  Captures/ scans product indentifiers and handle invalid inputs
 valid_ids = [str(p["id"]) for p in products] 
-print("VALID IDS:", valid_ids)
+#print("VALID IDS:", valid_ids)
 
 selected_ids = []
 
@@ -70,20 +70,24 @@ print("SELECTED PRODUCTS:")
 for item in products:
     if str(item["id"]) in str(selected_ids):
         price_usd = to_usd(item['price'])
-        print(f"{item['name']}---{price_usd}")
+        print(f"...{item['name']}---{price_usd}")
         next
 #3.4 Displays tax and totals       
 print("---------------------------------")
 prices = [x["price"] for x in products if str(x["id"]) in str(selected_ids)]
 total_price = sum(prices)
 simple_total_price = round(total_price,2)
+subtotal = to_usd(simple_total_price)
+
 total_tax = total_price * 0.0875
 simple_total_tax = round(total_tax,2)
-print("SUBTOTAL: ",simple_total_price)
-print("TAX: ",simple_total_tax)
-print("TOTAL: ",simple_total_price + simple_total_tax)
+tax = to_usd(simple_total_tax)
 
+total = to_usd(simple_total_price + simple_total_tax)
 
+print("SUBTOTAL: ",subtotal)
+print("TAX: ",tax)
+print("TOTAL: ",total)
 
 
 print("---------------------------------")
