@@ -31,8 +31,6 @@ products = [
 
 
 
-
-
 #2 INFO INPUTS
 #2.1  Captures/ scans product indentifiers and handle invalid inputs
 valid_ids = [str(p["id"]) for p in products] 
@@ -51,8 +49,6 @@ while True:
         next 
 
 #print("SELECTED IDS:", selected_ids)
-
-
 
 
 
@@ -93,3 +89,17 @@ print("TOTAL: ",total)
 print("---------------------------------")
 print("THANKS, SEE YOU AGAIN SOON!")
 print("---------------------------------")
+
+
+
+##4 CHALLENGE: WRITING RECEIPTS TO FILE
+file = open(time.strftime('%Y-%m-%d-%H-%M-%S')+'.txt','w') 
+file.write("SELECTED PRODUCTS:")
+for item in products:
+    if str(item["id"]) in str(selected_ids):
+        price_usd = to_usd(item['price'])
+        file.write(f"{item['name']}---{price_usd}")
+        next
+file.write("SUBTOTAL: "+ subtotal)
+file.write("TAX: "+ tax)
+file.write("TOTAL: " + total)
