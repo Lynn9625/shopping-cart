@@ -48,7 +48,7 @@ while True:
         selected_ids.append(selected_id)
     else:
         print("OH, detected invalid input! Please try again...")
-        next # proceeds into the next iteration of the loop (OK to omit in this basic example because there is no more code following it inside the loop before the loop repeats)
+        next 
 
 #print("SELECTED IDS:", selected_ids)
 
@@ -57,7 +57,7 @@ while True:
 
 
 #3 INFO OUTPUTS
-#3.1 Displays store infor
+#3.1 Displays store info
 print("---------------------------------")
 print("GREEN FOODS GROCERY")
 print("WWW.GREEN-FOODS-GROCERY.COM")
@@ -75,9 +75,13 @@ for item in products:
 #3.4 Displays tax and totals       
 print("---------------------------------")
 prices = [x["price"] for x in products if str(x["id"]) in str(selected_ids)]
-print("SUBTOTAL: ",sum(prices))
-print("TAX: ",sum(prices)*0.0875)
-print("TOTAL: ",sum(prices)+sum(prices)*0.0875)
+total_price = sum(prices)
+simple_total_price = round(total_price,2)
+total_tax = total_price * 0.0875
+simple_total_tax = round(total_tax,2)
+print("SUBTOTAL: ",simple_total_price)
+print("TAX: ",simple_total_tax)
+print("TOTAL: ",simple_total_price + simple_total_tax)
 
 
 
